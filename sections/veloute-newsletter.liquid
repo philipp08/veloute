@@ -1,0 +1,189 @@
+{{ 'veloute-reveal.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'veloute-reveal.js' | asset_url }}" defer></script>
+
+<section class="veloute-newsletter color-{{ section.settings.color_scheme }}">
+  <style>
+    #shopify-section-{{ section.id }} .veloute-newsletter {
+      position: relative;
+      background: var(--color-background);
+      color: var(--color-foreground);
+      padding-block: {{ section.settings.padding_top }}px {{ section.settings.padding_bottom }}px;
+      overflow: hidden;
+    }
+
+    {% if section.settings.background_image != blank %}
+    #shopify-section-{{ section.id }} .veloute-newsletter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('{{ section.settings.background_image | image_url: width: 2400 }}') center/cover no-repeat;
+      opacity: {{ section.settings.background_opacity | divided_by: 100.0 }};
+      z-index: 0;
+    }
+    #shopify-section-{{ section.id }} .veloute-newsletter::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-background);
+      opacity: .55;
+      z-index: 0;
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__inner {
+      position: relative;
+      z-index: 1;
+      width: min(100% - 32px, 720px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__eyebrow {
+      margin: 0 0 18px;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgb(var(--color-foreground-rgb) / .6);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__heading {
+      margin: 0;
+      font-family: var(--font-heading--family);
+      font-size: clamp(2.4rem, 5.5vw, 5.4rem);
+      line-height: .98;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      text-wrap: balance;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__text {
+      margin: 22px auto 0;
+      max-width: 480px;
+      color: rgb(var(--color-foreground-rgb) / .72);
+      line-height: 1.6;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__form {
+      margin-top: 36px;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border-bottom: 1px solid rgb(var(--color-foreground-rgb) / .4);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__input {
+      flex: 1;
+      padding: 16px 4px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+    }
+    #shopify-section-{{ section.id }} .veloute-newsletter__input::placeholder {
+      color: rgb(var(--color-foreground-rgb) / .45);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      padding: 16px 8px;
+      font-size: .76rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: inherit;
+      transition: gap .25s ease;
+    }
+    #shopify-section-{{ section.id }} .veloute-newsletter__button:hover {
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__note {
+      margin: 18px 0 0;
+      font-size: .76rem;
+      color: rgb(var(--color-foreground-rgb) / .55);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-newsletter__success,
+    #shopify-section-{{ section.id }} .veloute-newsletter__error {
+      margin: 18px 0 0;
+      font-size: .82rem;
+    }
+    #shopify-section-{{ section.id }} .veloute-newsletter__success { color: rgb(var(--color-foreground-rgb) / .8); }
+    #shopify-section-{{ section.id }} .veloute-newsletter__error { color: #c93d3d; }
+  </style>
+
+  <div class="veloute-newsletter__inner">
+    {% if section.settings.eyebrow != blank %}
+      <p class="veloute-newsletter__eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+    {% endif %}
+    <h2 class="veloute-newsletter__heading" data-reveal data-reveal-delay="1">{{ section.settings.heading }}</h2>
+    {% if section.settings.text != blank %}
+      <p class="veloute-newsletter__text" data-reveal data-reveal-delay="2">{{ section.settings.text }}</p>
+    {% endif %}
+
+    <div data-reveal data-reveal-delay="3">
+      {%- form 'customer', class: 'veloute-newsletter__form-wrap' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="veloute-newsletter__form">
+          <label class="visually-hidden" for="VelouteNewsletter-{{ section.id }}">{{ section.settings.placeholder | default: 'E-Mail Adresse' }}</label>
+          <input
+            id="VelouteNewsletter-{{ section.id }}"
+            class="veloute-newsletter__input"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            required
+            placeholder="{{ section.settings.placeholder | default: 'E-Mail Adresse' | escape }}"
+          >
+          <button type="submit" class="veloute-newsletter__button" name="commit">
+            {{ section.settings.button_label | default: 'Abonnieren' }}
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        {% if form.errors %}
+          <p class="veloute-newsletter__error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {% endif %}
+        {% if form.posted_successfully? %}
+          <p class="veloute-newsletter__success">{{ section.settings.success | default: 'Danke – wir melden uns bald.' }}</p>
+        {% endif %}
+
+        {% if section.settings.note != blank %}
+          <p class="veloute-newsletter__note">{{ section.settings.note }}</p>
+        {% endif %}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veloute Newsletter",
+  "tag": "section",
+  "class": "section-veloute-newsletter",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "image_picker", "id": "background_image", "label": "Hintergrundbild (optional)" },
+    { "type": "range", "id": "background_opacity", "label": "Hintergrund-Stärke", "min": 10, "max": 100, "step": 5, "unit": "%", "default": 60 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Newsletter" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Bleib in Kontakt." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Neue Stücke, Geschenkideen und ruhige Inspiration – einmal im Monat. Kein Spam." },
+    { "type": "text", "id": "placeholder", "label": "Eingabe Placeholder", "default": "Deine E-Mail Adresse" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Abonnieren" },
+    { "type": "text", "id": "success", "label": "Erfolgsmeldung", "default": "Danke – wir melden uns bald." },
+    { "type": "text", "id": "note", "label": "Hinweis", "default": "Mit Klick auf „Abonnieren\" stimmst du unseren Datenschutzbedingungen zu." },
+    { "type": "range", "id": "padding_top", "label": "Padding oben", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 120 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding unten", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 120 }
+  ],
+  "presets": [
+    { "name": "Veloute Newsletter" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,115 @@
+<section class="veloute-marquee color-{{ section.settings.color_scheme }}">
+  <style>
+    #shopify-section-{{ section.id }} .veloute-marquee {
+      background: var(--color-background);
+      color: var(--color-foreground);
+      border-top: 1px solid rgb(var(--color-foreground-rgb) / .08);
+      border-bottom: 1px solid rgb(var(--color-foreground-rgb) / .08);
+      padding-block: {{ section.settings.padding_top }}px {{ section.settings.padding_bottom }}px;
+      overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-marquee__viewport {
+      display: flex;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-marquee__track {
+      display: flex;
+      gap: clamp(36px, 6vw, 88px);
+      padding-right: clamp(36px, 6vw, 88px);
+      flex-shrink: 0;
+      min-width: 100%;
+      animation: vh-marquee-scroll {{ section.settings.speed }}s linear infinite;
+    }
+
+    @keyframes vh-marquee-scroll {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-100%, 0, 0); }
+    }
+
+    #shopify-section-{{ section.id }} .veloute-marquee__item {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(36px, 6vw, 88px);
+      font-family: var(--font-heading--family);
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      white-space: nowrap;
+      color: var(--color-foreground);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-marquee__item::after {
+      content: "{{ section.settings.separator | default: '·' }}";
+      color: rgb(var(--color-foreground-rgb) / .35);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-marquee:hover .veloute-marquee__track {
+      animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #shopify-section-{{ section.id }} .veloute-marquee__track {
+        animation: none;
+      }
+    }
+  </style>
+
+  {%- liquid
+    assign items = ''
+    for block in section.blocks
+      assign items = items | append: '|' | append: block.settings.text
+    endfor
+  -%}
+
+  <div class="veloute-marquee__viewport" aria-hidden="true">
+    {%- for i in (1..2) -%}
+      <div class="veloute-marquee__track">
+        {%- for block in section.blocks -%}
+          <span class="veloute-marquee__item">{{ block.settings.text }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veloute Marquee",
+  "tag": "section",
+  "class": "section-veloute-marquee",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "speed", "label": "Geschwindigkeit (Sekunden pro Runde)", "min": 20, "max": 120, "step": 5, "unit": "s", "default": 55 },
+    { "type": "text", "id": "separator", "label": "Trennzeichen", "default": "·" },
+    { "type": "range", "id": "padding_top", "label": "Padding oben", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding unten", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Statement",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Handverlesen" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Veloute Marquee",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Handverlesen" } },
+        { "type": "item", "settings": { "text": "Versand in 24h" } },
+        { "type": "item", "settings": { "text": "Geschenkverpackung" } },
+        { "type": "item", "settings": { "text": "30 Tage Rückgabe" } },
+        { "type": "item", "settings": { "text": "Made for moments" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

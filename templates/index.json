@@ -1,24 +1,55 @@
 {
   "sections": {
-    "hero_clean": {
-      "type": "veloute-hero-clean",
+    "hero_slideshow": {
+      "type": "veloute-hero-slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_0915.jpg",
+            "eyebrow": "Veloute Boutique",
+            "heading": "Details, die den Unterschied machen.",
+            "text": "Schmuck und Accessoires mit ruhiger Silhouette, klarer Auswahl und hochwertigem Finish.",
+            "primary_label": "Damen shoppen",
+            "primary_link": "/collections/damen-accessoires",
+            "secondary_label": "Herren shoppen",
+            "secondary_link": "/collections/herren-accessoires"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Neu im Shop",
+            "heading": "Feine Halsketten. Klare Linien.",
+            "text": "Stücke, die nahe am Look bleiben – einzeln getragen oder fein gelayert.",
+            "primary_label": "Halsketten ansehen",
+            "primary_link": "/collections/halsketten",
+            "secondary_label": "Alle Highlights",
+            "secondary_link": "/collections/highlights"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Geschenkidee",
+            "heading": "Ein Detail. Ein Moment.",
+            "text": "Sorgfältig verpackt, schnell versendet – für die Momente, die zählen.",
+            "primary_label": "Geschenke entdecken",
+            "primary_link": "/collections/highlights",
+            "secondary_label": "Armbänder",
+            "secondary_link": "/collections/armbaender"
+          }
+        }
+      },
+      "block_order": ["slide_1", "slide_2", "slide_3"],
       "settings": {
         "color_scheme": "scheme-1",
-        "video": "shopify://files/videos/219228.mp4",
-        "image": "shopify://shop_images/IMG_0915.jpg",
         "height_desktop": 100,
         "height_mobile": 90,
         "overlay_opacity": 35,
-        "vertical_alignment": "end",
-        "text_alignment": "left",
-        "content_width": 760,
-        "eyebrow": "Veloute Boutique",
-        "heading": "Details, die den Unterschied machen.",
-        "text": "Schmuck und Accessoires mit ruhiger Silhouette, klarer Auswahl und hochwertigem Finish.",
-        "primary_label": "Damen shoppen",
-        "primary_link": "/collections/damen-accessoires",
-        "secondary_label": "Herren shoppen",
-        "secondary_link": "/collections/herren-accessoires"
+        "autoplay": true,
+        "interval": 6,
+        "aria_label": "Veloute Highlights"
       }
     },
     "promo_strip": {
@@ -26,34 +57,25 @@
       "blocks": {
         "promo_shipping": {
           "type": "message",
-          "settings": {
-            "kicker": "Versand",
-            "text": "Kostenlos ab 49 €"
-          }
+          "settings": { "kicker": "Versand", "text": "Kostenlos ab 49 €" }
         },
         "promo_selection": {
           "type": "message",
-          "settings": {
-            "kicker": "Auswahl",
-            "text": "Kuratiert statt beliebig"
-          }
+          "settings": { "kicker": "Auswahl", "text": "Kuratiert statt beliebig" }
         },
         "promo_gifting": {
           "type": "message",
-          "settings": {
-            "kicker": "Geschenke",
-            "text": "Schnell das passende Detail finden"
-          }
+          "settings": { "kicker": "Geschenke", "text": "Sorgfältig verpackt, schnell versendet" }
+        },
+        "promo_returns": {
+          "type": "message",
+          "settings": { "kicker": "Rückgabe", "text": "30 Tage entspannt" }
         }
       },
-      "block_order": [
-        "promo_shipping",
-        "promo_selection",
-        "promo_gifting"
-      ],
+      "block_order": ["promo_shipping", "promo_selection", "promo_gifting", "promo_returns"],
       "settings": {
         "color_scheme": "scheme-1",
-        "height": 72,
+        "height": 64,
         "text_alignment": "center"
       }
     },
@@ -64,9 +86,8 @@
           "type": "tile",
           "settings": {
             "collection": "damen-accessoires",
-            "image": "",
             "title": "Damen",
-            "text": "Feine Schmuckstücke, Taschen-Details und Accessoires für elegante Alltagslooks.",
+            "text": "Feine Schmuckstücke und Accessoires für ruhige, präzise Alltagslooks.",
             "label": "Damen entdecken",
             "link": "/collections/damen-accessoires"
           }
@@ -75,28 +96,43 @@
           "type": "tile",
           "settings": {
             "collection": "herren-accessoires",
-            "image": "",
             "title": "Herren",
-            "text": "Reduzierte Details, klare Formen und Accessoires mit ruhiger Präsenz.",
+            "text": "Reduzierte Details, klare Formen, ruhige Präsenz.",
             "label": "Herren entdecken",
             "link": "/collections/herren-accessoires"
           }
         }
       },
-      "block_order": [
-        "tile_women",
-        "tile_men"
-      ],
+      "block_order": ["tile_women", "tile_men"],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Shop nach Stil.",
-        "text": "Zwei klare Einstiege, damit Kundinnen und Kunden sofort in die passende Richtung gehen.",
+        "text": "Zwei klare Einstiege – damit du direkt in der richtigen Richtung landest.",
         "columns_desktop": 2,
-        "tile_height": 620,
-        "tile_height_mobile": 420,
+        "tile_height": 680,
+        "tile_height_mobile": 460,
         "gap": 12,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 96,
+        "padding_bottom": 48
+      }
+    },
+    "marquee": {
+      "type": "veloute-marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Handverlesen" } },
+        "m2": { "type": "item", "settings": { "text": "Versand in 24h" } },
+        "m3": { "type": "item", "settings": { "text": "Geschenkverpackung inklusive" } },
+        "m4": { "type": "item", "settings": { "text": "30 Tage Rückgabe" } },
+        "m5": { "type": "item", "settings": { "text": "Made for moments" } },
+        "m6": { "type": "item", "settings": { "text": "Klare Auswahl" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "speed": 55,
+        "separator": "·",
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "featured_highlights": {
@@ -105,35 +141,29 @@
         "color_scheme": "scheme-1",
         "collection": "highlights",
         "heading": "Highlights der Woche.",
-        "text": "Eine reduzierte Auswahl, die schnell Orientierung gibt und direkt kaufbar ist.",
+        "text": "Eine reduzierte Auswahl, die Orientierung gibt und direkt kaufbar ist.",
         "product_count": 4,
         "columns_desktop": 4,
         "image_ratio": "4 / 5",
         "gap": 18,
         "show_view_all": true,
         "view_all_label": "Alle ansehen",
-        "padding_top": 40,
-        "padding_bottom": 80
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
-    "editorial_banner": {
-      "type": "veloute-editorial-banner",
+    "editorial_split": {
+      "type": "veloute-editorial-split",
       "settings": {
         "color_scheme": "scheme-1",
-        "full_width": true,
-        "video": "",
-        "image": "",
-        "height": 640,
-        "height_mobile": 520,
-        "vertical_alignment": "center",
-        "text_alignment": "left",
-        "eyebrow": "Kollektion Privé",
-        "heading": "Ein ruhiger Banner für deinen nächsten Drop.",
-        "text": "Setze hier eine Kollektion, einen Saison-Fokus oder eine Geschenkidee prominent in Szene.",
-        "button_label": "Kollektion entdecken",
-        "button_link": "/collections/all",
-        "padding_top": 0,
-        "padding_bottom": 72
+        "image_position": "left",
+        "eyebrow": "Unser Stil",
+        "heading": "Ruhige Stücke. Tragbar jeden Tag.",
+        "text": "Wir kuratieren Schmuck und Accessoires, die nicht laut sein müssen. Klare Linien, feine Materialien, präzise verarbeitet – damit jedes Detail seinen Platz hat.",
+        "button_label": "Mehr über Veloute",
+        "button_link": "/pages/about",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "category_tiles": {
@@ -143,9 +173,8 @@
           "type": "tile",
           "settings": {
             "collection": "halsketten",
-            "image": "",
             "title": "Halsketten",
-            "text": "Schlichte Linien, feine Akzente und Stücke, die nahe am Look bleiben.",
+            "text": "Schlichte Linien, feine Akzente, nah am Look.",
             "label": "Halsketten shoppen",
             "link": "/collections/halsketten"
           }
@@ -154,9 +183,8 @@
           "type": "tile",
           "settings": {
             "collection": "armbaender",
-            "image": "",
             "title": "Armbänder",
-            "text": "Kleine Details am Handgelenk, clean kombiniert und leicht zu schenken.",
+            "text": "Kleine Details am Handgelenk, clean kombiniert.",
             "label": "Armbänder shoppen",
             "link": "/collections/armbaender"
           }
@@ -165,80 +193,104 @@
           "type": "tile",
           "settings": {
             "collection": "schlusselanhanger",
-            "image": "",
             "title": "Schlüsselanhänger",
-            "text": "Accessoires für Taschen, Schlüssel und kleine persönliche Akzente.",
+            "text": "Accessoires für Taschen, Schlüssel und persönliche Akzente.",
             "label": "Details shoppen",
             "link": "/collections/schlusselanhanger"
           }
         }
       },
-      "block_order": [
-        "tile_necklaces",
-        "tile_bracelets",
-        "tile_keychains"
-      ],
+      "block_order": ["tile_necklaces", "tile_bracelets", "tile_keychains"],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Nach Kategorie shoppen.",
-        "text": "Alle wichtigen Einstiege bleiben als eigene Kacheln im Editor bearbeitbar.",
+        "text": "Alle wichtigen Einstiege auf einen Blick.",
         "columns_desktop": 3,
-        "tile_height": 520,
-        "tile_height_mobile": 380,
+        "tile_height": 540,
+        "tile_height_mobile": 400,
         "gap": 12,
-        "padding_top": 32,
-        "padding_bottom": 72
+        "padding_top": 24,
+        "padding_bottom": 96
+      }
+    },
+    "lookbook": {
+      "type": "veloute-lookbook",
+      "blocks": {
+        "lb1": { "type": "image", "settings": { "size": "wide",   "title": "Stack & Layer", "cta": "Shop", "link": "/collections/halsketten" } },
+        "lb2": { "type": "image", "settings": { "size": "narrow", "title": "Daily Pieces", "cta": "Shop", "link": "/collections/damen-accessoires" } },
+        "lb3": { "type": "image", "settings": { "size": "tall",   "title": "Statement",    "cta": "Shop", "link": "/collections/highlights" } },
+        "lb4": { "type": "image", "settings": { "size": "medium", "title": "Soft Metals",  "cta": "Shop", "link": "/collections/armbaender" } },
+        "lb5": { "type": "image", "settings": { "size": "narrow", "title": "Detail",       "cta": "Shop", "link": "/collections/schlusselanhanger" } },
+        "lb6": { "type": "image", "settings": { "size": "wide",   "title": "Editorial",    "cta": "Shop", "link": "/collections/herren-accessoires" } }
+      },
+      "block_order": ["lb1", "lb2", "lb3", "lb4", "lb5", "lb6"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Lookbook",
+        "heading": "In Szene gesetzt.",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "testimonials": {
+      "type": "veloute-testimonials",
+      "blocks": {
+        "t1": { "type": "quote", "settings": { "quote": "Endlich Schmuck, der zum Look passt – nicht andersrum. Verarbeitung top.", "name": "Lena", "role": "Berlin" } },
+        "t2": { "type": "quote", "settings": { "quote": "Geschenkverpackung sieht aus wie aus einer Boutique. Wurde direkt verschenkt.", "name": "Sophia", "role": "München" } },
+        "t3": { "type": "quote", "settings": { "quote": "Klare Auswahl, schneller Versand, faire Preise. Bin Stammkundin.", "name": "Mira", "role": "Hamburg" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Stimmen",
+        "heading": "Was unsere Kundinnen sagen.",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "usp_grid": {
       "type": "veloute-usp-grid",
       "blocks": {
-        "usp_1": {
-          "type": "item",
-          "settings": {
-            "kicker": "01",
-            "heading": "Klar kuratiert",
-            "text": "Weniger beliebige Auswahl, mehr schnelle Orientierung."
-          }
-        },
-        "usp_2": {
-          "type": "item",
-          "settings": {
-            "kicker": "02",
-            "heading": "Minimaler Look",
-            "text": "Große Bilder, ruhige Typografie und klare Wege zu den Produkten."
-          }
-        },
-        "usp_3": {
-          "type": "item",
-          "settings": {
-            "kicker": "03",
-            "heading": "Leicht zu pflegen",
-            "text": "Alle Bereiche sind einzelne Sections und im Shopify-Editor editierbar."
-          }
-        }
+        "usp_1": { "type": "item", "settings": { "kicker": "01", "heading": "Klar kuratiert",  "text": "Weniger beliebige Auswahl, mehr schnelle Orientierung." } },
+        "usp_2": { "type": "item", "settings": { "kicker": "02", "heading": "Minimaler Look",  "text": "Große Bilder, ruhige Typografie, klare Wege zum Produkt." } },
+        "usp_3": { "type": "item", "settings": { "kicker": "03", "heading": "Sorgfältig verpackt", "text": "Jede Bestellung kommt geschenkfertig bei dir an." } }
       },
-      "block_order": [
-        "usp_1",
-        "usp_2",
-        "usp_3"
-      ],
+      "block_order": ["usp_1", "usp_2", "usp_3"],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Warum Veloute.",
         "columns_desktop": 3,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "newsletter": {
+      "type": "veloute-newsletter",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Newsletter",
+        "heading": "Bleib in Kontakt.",
+        "text": "Neue Stücke, Geschenkideen und ruhige Inspiration – einmal im Monat. Kein Spam.",
+        "placeholder": "Deine E-Mail Adresse",
+        "button_label": "Abonnieren",
+        "success": "Danke – wir melden uns bald.",
+        "note": "Mit Klick auf „Abonnieren\" stimmst du unseren Datenschutzbedingungen zu.",
+        "padding_top": 140,
+        "padding_bottom": 140
       }
     }
   },
   "order": [
-    "hero_clean",
+    "hero_slideshow",
     "promo_strip",
     "shop_entry_tiles",
+    "marquee",
     "featured_highlights",
-    "editorial_banner",
+    "editorial_split",
     "category_tiles",
-    "usp_grid"
+    "lookbook",
+    "testimonials",
+    "usp_grid",
+    "newsletter"
   ]
 }
