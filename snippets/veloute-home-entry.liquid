@@ -1,0 +1,26 @@
+{% liquid
+  assign entry_url = fallback_url
+  if collection != blank
+    assign entry_url = collection.url
+  endif
+
+  assign entry_image = collection.featured_image
+  if entry_image == blank and collection.products.first.featured_image != blank
+    assign entry_image = collection.products.first.featured_image
+  endif
+%}
+
+<a class="veloute-entry" href="{{ entry_url }}">
+  <div class="veloute-entry__media" aria-hidden="true">
+    {% if entry_image != blank %}
+      {{ entry_image | image_url: width: 1500 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw', alt: title }}
+    {% else %}
+      {{ 'collection-1' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+  <div class="veloute-entry__content">
+    <h3>{{ title }}</h3>
+    <p>{{ text }}</p>
+    <span class="veloute-link">Jetzt entdecken</span>
+  </div>
+</a>
