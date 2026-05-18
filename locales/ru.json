@@ -368,5 +368,51 @@
     "press": {
       "default_label": "Упоминание в прессе"
     }
+  },
+  "gempages": {
+    "Carousel": {
+      "no_slider": "Без ползунка"
+    },
+    "Newsletter": {
+      "err_msg_default": "Не удается отправить письмо. Пожалуйста, попробуйте позже.",
+      "success_msg_default": "Спасибо за подписку"
+    },
+    "IconListV2": {
+      "icons_not_found": "Иконки не найдены"
+    },
+    "IconList": {
+      "icons_not_found": "Иконки не найдены"
+    },
+    "IconListHoz": {
+      "icons_not_found": "Значки не найдены"
+    },
+    "Product": {
+      "product_not_found": "Товар не найден"
+    },
+    "ProductList": {
+      "product_not_found": "Товар не найден!",
+      "no_products_found": "Ничего не найдено!",
+      "no_related_products": "Нет похожих товаров!"
+    },
+    "ProductTitle": {
+      "product_not_found": "Товар не найден"
+    },
+    "ProductVariants": {
+      "please_select": "Пожалуйста, выберите вариант"
+    },
+    "StockCounter": {
+      "let_buy_now": "<mark>СПЕШИТЕ!</mark> КУПИТЬ СЕЙЧАС"
+    },
+    "Breadcrumb": {
+      "home": "Домой"
+    },
+    "CarouselV3": {
+      "no_slider": "Без слайдера"
+    },
+    "ProductListV3": {
+      "product_not_found": "Продукт не найден!",
+      "no_products_found": "Keine Produkte gefunden!",
+      "no_related_products": "Нет похожих товаров!"
+    }
   }
 }
