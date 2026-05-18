@@ -388,5 +388,19 @@
       "sold_out": "Ausverkauft",
       "unavailable": "Nicht verfügbar"
     }
+  },
+  "veloute": {
+    "slideshow": {
+      "region_label": "Veloute Slideshow",
+      "dots_label": "Slides",
+      "slide_of": "{{ current }} von {{ total }}",
+      "go_to_slide": "Zu Slide {{ index }} wechseln"
+    },
+    "shop_the_look": {
+      "view_product": "Produkt ansehen"
+    },
+    "press": {
+      "default_label": "Pressestimme"
+    }
   }
 }

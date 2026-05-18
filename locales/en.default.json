@@ -333,5 +333,19 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "veloute": {
+    "slideshow": {
+      "region_label": "Veloute slideshow",
+      "dots_label": "Slides",
+      "slide_of": "{{ current }} of {{ total }}",
+      "go_to_slide": "Go to slide {{ index }}"
+    },
+    "shop_the_look": {
+      "view_product": "View product"
+    },
+    "press": {
+      "default_label": "Press feature"
+    }
   }
 }

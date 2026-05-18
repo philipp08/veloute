@@ -99,7 +99,7 @@
       {% for block in section.blocks %}
         <div class="veloute-press__item" {{ block.shopify_attributes }}>
           {% if block.settings.link != blank %}
-            <a class="veloute-press__link" href="{{ block.settings.link }}" aria-label="{{ block.settings.name | default: 'Press' | escape }}">
+            <a class="veloute-press__link" href="{{ block.settings.link }}" aria-label="{% if block.settings.name != blank %}{{ block.settings.name | escape }}{% else %}{{ 'veloute.press.default_label' | t | escape }}{% endif %}">
           {% endif %}
             {% if block.settings.logo != blank %}
               {{ block.settings.logo | image_url: width: 360 | image_tag:

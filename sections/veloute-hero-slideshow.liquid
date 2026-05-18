@@ -16,7 +16,7 @@
   data-autoplay="{{ section.settings.autoplay }}"
   data-interval="{{ section.settings.interval | times: 1000 }}"
   aria-roledescription="carousel"
-  aria-label="{{ section.settings.aria_label | default: 'Veloute Slideshow' | escape }}"
+  aria-label="{% if section.settings.aria_label != blank %}{{ section.settings.aria_label | escape }}{% else %}{{ 'veloute.slideshow.region_label' | t | escape }}{% endif %}"
   style="--vh-pad-top: {{ section.settings.padding_top }}px; --vh-pad-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <style>
@@ -378,7 +378,7 @@
           data-image-position="{{ img_position }}"
           role="group"
           aria-roledescription="slide"
-          aria-label="{{ forloop.index }} von {{ section.blocks.size }}"
+          aria-label="{{ 'veloute.slideshow.slide_of' | t: current: forloop.index, total: section.blocks.size }}"
           {{ block.shopify_attributes }}
         >
           <div class="veloute-hero-slideshow__media-wrap">
@@ -423,7 +423,7 @@
 
     {% if section.blocks.size > 1 %}
       <div class="veloute-hero-slideshow__controls">
-        <div class="veloute-hero-slideshow__dots" role="tablist" aria-label="Slides">
+        <div class="veloute-hero-slideshow__dots" role="tablist" aria-label="{{ 'veloute.slideshow.dots_label' | t }}">
           {% for block in section.blocks %}
             <button
               type="button"
@@ -431,7 +431,7 @@
               data-slide-to="{{ forloop.index0 }}"
               role="tab"
               aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-              aria-label="Slide {{ forloop.index }}"
+              aria-label="{{ 'veloute.slideshow.go_to_slide' | t: index: forloop.index }}"
               style="--vh-progress-duration: {{ section.settings.interval }}s;"
             ></button>
           {% endfor %}

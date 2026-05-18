@@ -345,5 +345,19 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "veloute": {
+    "slideshow": {
+      "region_label": "Слайдер Veloute",
+      "dots_label": "Слайды",
+      "slide_of": "{{ current }} из {{ total }}",
+      "go_to_slide": "Перейти к слайду {{ index }}"
+    },
+    "shop_the_look": {
+      "view_product": "Смотреть товар"
+    },
+    "press": {
+      "default_label": "Упоминание в прессе"
+    }
   }
 }

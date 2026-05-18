@@ -276,7 +276,7 @@
           data-stl-hotspot
           data-edge="{{ edge }}"
           style="left: {{ x }}%; top: {{ y }}%;"
-          aria-label="{{ p_title | default: 'Produkt ansehen' | escape }}"
+          aria-label="{% if p_title != blank %}{{ p_title | escape }}{% else %}{{ 'veloute.shop_the_look.view_product' | t | escape }}{% endif %}"
           {{ block.shopify_attributes }}
         >
           <span class="veloute-stl__pulse" aria-hidden="true"></span>
