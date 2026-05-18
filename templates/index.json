@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_slideshow": {
@@ -7,7 +16,6 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/IMG_0915.jpg",
-            "image_position": "right",
             "eyebrow": "Veloute Boutique",
             "heading": "Details, die den Unterschied machen.",
             "text": "Schmuck und Accessoires mit ruhiger Silhouette, klarer Auswahl und hochwertigem Finish.",
@@ -20,7 +28,6 @@
         "slide_2": {
           "type": "slide",
           "settings": {
-            "image_position": "left",
             "eyebrow": "Neu im Shop",
             "heading": "Feine Halsketten. Klare Linien.",
             "text": "Stücke, die nahe am Look bleiben – einzeln getragen oder fein gelayert.",
@@ -33,7 +40,6 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "image_position": "right",
             "eyebrow": "Geschenkidee",
             "heading": "Ein Detail. Ein Moment.",
             "text": "Sorgfältig verpackt, schnell versendet – für die Momente, die zählen.",
@@ -44,19 +50,16 @@
           }
         }
       },
-      "block_order": ["slide_1", "slide_2", "slide_3"],
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
-        "layout_style": "side-by-side",
-        "image_ratio_desktop": "4 / 3",
-        "image_ratio_mobile": "4 / 5",
-        "max_height_desktop": 620,
-        "max_height_mobile": 520,
         "overlay_opacity": 30,
         "autoplay": true,
         "interval": 6,
-        "padding_top": 32,
-        "padding_bottom": 48,
         "aria_label": "Veloute Highlights"
       }
     },
@@ -65,22 +68,39 @@
       "blocks": {
         "promo_shipping": {
           "type": "message",
-          "settings": { "kicker": "Versand", "text": "Kostenlos ab 49 €" }
+          "settings": {
+            "kicker": "Versand",
+            "text": "Kostenlos ab 49 €"
+          }
         },
         "promo_selection": {
           "type": "message",
-          "settings": { "kicker": "Auswahl", "text": "Kuratiert statt beliebig" }
+          "settings": {
+            "kicker": "Auswahl",
+            "text": "Kuratiert statt beliebig"
+          }
         },
         "promo_gifting": {
           "type": "message",
-          "settings": { "kicker": "Geschenke", "text": "Sorgfältig verpackt, schnell versendet" }
+          "settings": {
+            "kicker": "Geschenke",
+            "text": "Sorgfältig verpackt, schnell versendet"
+          }
         },
         "promo_returns": {
           "type": "message",
-          "settings": { "kicker": "Rückgabe", "text": "30 Tage entspannt" }
+          "settings": {
+            "kicker": "Rückgabe",
+            "text": "30 Tage entspannt"
+          }
         }
       },
-      "block_order": ["promo_shipping", "promo_selection", "promo_gifting", "promo_returns"],
+      "block_order": [
+        "promo_shipping",
+        "promo_selection",
+        "promo_gifting",
+        "promo_returns"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "height": 64,
@@ -111,7 +131,10 @@
           }
         }
       },
-      "block_order": ["tile_women", "tile_men"],
+      "block_order": [
+        "tile_women",
+        "tile_men"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Shop nach Stil.",
@@ -127,14 +150,51 @@
     "marquee": {
       "type": "veloute-marquee",
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "Handverlesen" } },
-        "m2": { "type": "item", "settings": { "text": "Versand in 24h" } },
-        "m3": { "type": "item", "settings": { "text": "Geschenkverpackung inklusive" } },
-        "m4": { "type": "item", "settings": { "text": "30 Tage Rückgabe" } },
-        "m5": { "type": "item", "settings": { "text": "Made for moments" } },
-        "m6": { "type": "item", "settings": { "text": "Klare Auswahl" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "Handverlesen"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Versand in 24h"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "Geschenkverpackung inklusive"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "30 Tage Rückgabe"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "text": "Made for moments"
+          }
+        },
+        "m6": {
+          "type": "item",
+          "settings": {
+            "text": "Klare Auswahl"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "speed": 55,
@@ -208,7 +268,11 @@
           }
         }
       },
-      "block_order": ["tile_necklaces", "tile_bracelets", "tile_keychains"],
+      "block_order": [
+        "tile_necklaces",
+        "tile_bracelets",
+        "tile_keychains"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Nach Kategorie shoppen.",
@@ -224,14 +288,69 @@
     "lookbook": {
       "type": "veloute-lookbook",
       "blocks": {
-        "lb1": { "type": "image", "settings": { "size": "wide",   "title": "Stack & Layer", "cta": "Shop", "link": "/collections/halsketten" } },
-        "lb2": { "type": "image", "settings": { "size": "narrow", "title": "Daily Pieces", "cta": "Shop", "link": "/collections/damen-accessoires" } },
-        "lb3": { "type": "image", "settings": { "size": "tall",   "title": "Statement",    "cta": "Shop", "link": "/collections/highlights" } },
-        "lb4": { "type": "image", "settings": { "size": "medium", "title": "Soft Metals",  "cta": "Shop", "link": "/collections/armbaender" } },
-        "lb5": { "type": "image", "settings": { "size": "narrow", "title": "Detail",       "cta": "Shop", "link": "/collections/schlusselanhanger" } },
-        "lb6": { "type": "image", "settings": { "size": "wide",   "title": "Editorial",    "cta": "Shop", "link": "/collections/herren-accessoires" } }
+        "lb1": {
+          "type": "image",
+          "settings": {
+            "size": "wide",
+            "title": "Stack & Layer",
+            "cta": "Shop",
+            "link": "/collections/halsketten"
+          }
+        },
+        "lb2": {
+          "type": "image",
+          "settings": {
+            "size": "narrow",
+            "title": "Daily Pieces",
+            "cta": "Shop",
+            "link": "/collections/damen-accessoires"
+          }
+        },
+        "lb3": {
+          "type": "image",
+          "settings": {
+            "size": "tall",
+            "title": "Statement",
+            "cta": "Shop",
+            "link": "/collections/highlights"
+          }
+        },
+        "lb4": {
+          "type": "image",
+          "settings": {
+            "size": "medium",
+            "title": "Soft Metals",
+            "cta": "Shop",
+            "link": "/collections/armbaender"
+          }
+        },
+        "lb5": {
+          "type": "image",
+          "settings": {
+            "size": "narrow",
+            "title": "Detail",
+            "cta": "Shop",
+            "link": "/collections/schlusselanhanger"
+          }
+        },
+        "lb6": {
+          "type": "image",
+          "settings": {
+            "size": "wide",
+            "title": "Editorial",
+            "cta": "Shop",
+            "link": "/collections/herren-accessoires"
+          }
+        }
       },
-      "block_order": ["lb1", "lb2", "lb3", "lb4", "lb5", "lb6"],
+      "block_order": [
+        "lb1",
+        "lb2",
+        "lb3",
+        "lb4",
+        "lb5",
+        "lb6"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "eyebrow": "Lookbook",
@@ -243,11 +362,36 @@
     "testimonials": {
       "type": "veloute-testimonials",
       "blocks": {
-        "t1": { "type": "quote", "settings": { "quote": "Endlich Schmuck, der zum Look passt – nicht andersrum. Verarbeitung top.", "name": "Lena", "role": "Berlin" } },
-        "t2": { "type": "quote", "settings": { "quote": "Geschenkverpackung sieht aus wie aus einer Boutique. Wurde direkt verschenkt.", "name": "Sophia", "role": "München" } },
-        "t3": { "type": "quote", "settings": { "quote": "Klare Auswahl, schneller Versand, faire Preise. Bin Stammkundin.", "name": "Mira", "role": "Hamburg" } }
+        "t1": {
+          "type": "quote",
+          "settings": {
+            "quote": "Endlich Schmuck, der zum Look passt – nicht andersrum. Verarbeitung top.",
+            "name": "Lena",
+            "role": "Berlin"
+          }
+        },
+        "t2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Geschenkverpackung sieht aus wie aus einer Boutique. Wurde direkt verschenkt.",
+            "name": "Sophia",
+            "role": "München"
+          }
+        },
+        "t3": {
+          "type": "quote",
+          "settings": {
+            "quote": "Klare Auswahl, schneller Versand, faire Preise. Bin Stammkundin.",
+            "name": "Mira",
+            "role": "Hamburg"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "eyebrow": "Stimmen",
@@ -259,11 +403,36 @@
     "usp_grid": {
       "type": "veloute-usp-grid",
       "blocks": {
-        "usp_1": { "type": "item", "settings": { "kicker": "01", "heading": "Klar kuratiert",  "text": "Weniger beliebige Auswahl, mehr schnelle Orientierung." } },
-        "usp_2": { "type": "item", "settings": { "kicker": "02", "heading": "Minimaler Look",  "text": "Große Bilder, ruhige Typografie, klare Wege zum Produkt." } },
-        "usp_3": { "type": "item", "settings": { "kicker": "03", "heading": "Sorgfältig verpackt", "text": "Jede Bestellung kommt geschenkfertig bei dir an." } }
+        "usp_1": {
+          "type": "item",
+          "settings": {
+            "kicker": "01",
+            "heading": "Klar kuratiert",
+            "text": "Weniger beliebige Auswahl, mehr schnelle Orientierung."
+          }
+        },
+        "usp_2": {
+          "type": "item",
+          "settings": {
+            "kicker": "02",
+            "heading": "Minimaler Look",
+            "text": "Große Bilder, ruhige Typografie, klare Wege zum Produkt."
+          }
+        },
+        "usp_3": {
+          "type": "item",
+          "settings": {
+            "kicker": "03",
+            "heading": "Sorgfältig verpackt",
+            "text": "Jede Bestellung kommt geschenkfertig bei dir an."
+          }
+        }
       },
-      "block_order": ["usp_1", "usp_2", "usp_3"],
+      "block_order": [
+        "usp_1",
+        "usp_2",
+        "usp_3"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "heading": "Warum Veloute.",
@@ -275,11 +444,45 @@
     "shop_the_look": {
       "type": "veloute-shop-the-look",
       "blocks": {
-        "hs1": { "type": "hotspot", "settings": { "x": 32, "y": 36, "title_override": "Feine Halskette", "price_override": "ab 89 €", "link_override": "/collections/halsketten", "cta_label": "Ansehen" } },
-        "hs2": { "type": "hotspot", "settings": { "x": 55, "y": 58, "title_override": "Armband Layer", "price_override": "ab 69 €", "link_override": "/collections/armbaender", "cta_label": "Ansehen" } },
-        "hs3": { "type": "hotspot", "settings": { "x": 74, "y": 28, "title_override": "Statement-Detail", "price_override": "ab 119 €", "link_override": "/collections/highlights", "cta_label": "Ansehen" } }
+        "hs1": {
+          "type": "hotspot",
+          "settings": {
+            "x": 32,
+            "y": 36,
+            "title_override": "Feine Halskette",
+            "price_override": "ab 89 €",
+            "link_override": "/collections/halsketten",
+            "cta_label": "Ansehen"
+          }
+        },
+        "hs2": {
+          "type": "hotspot",
+          "settings": {
+            "x": 55,
+            "y": 58,
+            "title_override": "Armband Layer",
+            "price_override": "ab 69 €",
+            "link_override": "/collections/armbaender",
+            "cta_label": "Ansehen"
+          }
+        },
+        "hs3": {
+          "type": "hotspot",
+          "settings": {
+            "x": 74,
+            "y": 28,
+            "title_override": "Statement-Detail",
+            "price_override": "ab 119 €",
+            "link_override": "/collections/highlights",
+            "cta_label": "Ansehen"
+          }
+        }
       },
-      "block_order": ["hs1", "hs2", "hs3"],
+      "block_order": [
+        "hs1",
+        "hs2",
+        "hs3"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "eyebrow": "Shop the Look",
@@ -294,13 +497,44 @@
     "press_strip": {
       "type": "veloute-press-strip",
       "blocks": {
-        "pr1": { "type": "logo", "settings": { "name": "Vogue" } },
-        "pr2": { "type": "logo", "settings": { "name": "ELLE" } },
-        "pr3": { "type": "logo", "settings": { "name": "Harper's Bazaar" } },
-        "pr4": { "type": "logo", "settings": { "name": "InStyle" } },
-        "pr5": { "type": "logo", "settings": { "name": "Glamour" } }
+        "pr1": {
+          "type": "logo",
+          "settings": {
+            "name": "Vogue"
+          }
+        },
+        "pr2": {
+          "type": "logo",
+          "settings": {
+            "name": "ELLE"
+          }
+        },
+        "pr3": {
+          "type": "logo",
+          "settings": {
+            "name": "Harper's Bazaar"
+          }
+        },
+        "pr4": {
+          "type": "logo",
+          "settings": {
+            "name": "InStyle"
+          }
+        },
+        "pr5": {
+          "type": "logo",
+          "settings": {
+            "name": "Glamour"
+          }
+        }
       },
-      "block_order": ["pr1", "pr2", "pr3", "pr4", "pr5"],
+      "block_order": [
+        "pr1",
+        "pr2",
+        "pr3",
+        "pr4",
+        "pr5"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "eyebrow": "Bekannt aus",
