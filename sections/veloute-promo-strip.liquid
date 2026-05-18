@@ -1,0 +1,129 @@
+<section class="veloute-promo-strip color-{{ section.settings.color_scheme }}">
+  <style>
+    #shopify-section-{{ section.id }} .veloute-promo-strip {
+      border-block: 1px solid rgb(var(--color-foreground-rgb) / .12);
+      background: var(--color-background);
+      color: var(--color-foreground);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-promo-strip__inner {
+      width: min(100% - 32px, 1320px);
+      margin: 0 auto;
+      min-height: {{ section.settings.height }}px;
+      display: grid;
+      grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, minmax(0, 1fr));
+      gap: 18px;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-promo-strip__item {
+      display: grid;
+      gap: 4px;
+      padding: 14px 0;
+      text-align: {{ section.settings.text_alignment }};
+    }
+
+    #shopify-section-{{ section.id }} .veloute-promo-strip__item span {
+      font-size: .7rem;
+      line-height: 1.25;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgb(var(--color-foreground-rgb) / .62);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-promo-strip__item strong {
+      font-size: .96rem;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .veloute-promo-strip__inner {
+        width: min(100% - 28px, 1320px);
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      #shopify-section-{{ section.id }} .veloute-promo-strip__item:not(:last-child) {
+        border-bottom: 1px solid rgb(var(--color-foreground-rgb) / .1);
+      }
+    }
+  </style>
+
+  <div class="veloute-promo-strip__inner">
+    {% for block in section.blocks %}
+      <div class="veloute-promo-strip__item" {{ block.shopify_attributes }}>
+        {% if block.settings.kicker != blank %}
+          <span>{{ block.settings.kicker }}</span>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <strong>{{ block.settings.text }}</strong>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veloute promo strip",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Minimum height",
+      "min": 54,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Small label",
+          "default": "Versand"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Kostenlos ab 49 €"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Veloute promo strip",
+      "blocks": [
+        { "type": "message" },
+        { "type": "message" },
+        { "type": "message" }
+      ]
+    }
+  ]
+}
+{% endschema %}
