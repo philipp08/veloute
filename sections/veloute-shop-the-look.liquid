@@ -1,0 +1,398 @@
+{{ 'veloute-reveal.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'veloute-reveal.js' | asset_url }}" defer></script>
+
+<section
+  class="veloute-stl color-{{ section.settings.color_scheme }}"
+  style="--stl-pad-top: {{ section.settings.padding_top }}px; --stl-pad-bottom: {{ section.settings.padding_bottom }}px;"
+  data-veloute-stl
+>
+  <style>
+    #shopify-section-{{ section.id }} .veloute-stl {
+      padding: var(--stl-pad-top, 96px) 0 var(--stl-pad-bottom, 96px);
+      background: var(--color-background, #faf8f5);
+      color: var(--color-foreground, #1d1d1b);
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__container {
+      width: min(100% - 32px, 1360px);
+      margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__head {
+      display: grid;
+      gap: 14px;
+      margin-bottom: clamp(32px, 5vw, 56px);
+      max-width: 720px;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__eyebrow {
+      margin: 0;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__heading {
+      margin: 0;
+      font-family: var(--font-heading--family);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__text {
+      margin: 0;
+      opacity: .78;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: {{ section.settings.image_ratio }};
+      max-height: 760px;
+      overflow: hidden;
+      background: #efece6;
+      border-radius: 2px;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__stage img,
+    #shopify-section-{{ section.id }} .veloute-stl__stage svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      transform: translate(-50%, -50%);
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      z-index: 2;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgb(255 255 255 / .92);
+      box-shadow: 0 4px 18px rgb(0 0 0 / .25);
+      display: grid;
+      place-items: center;
+      transition: transform .3s ease, background-color .3s ease;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pulse::before {
+      content: "";
+      width: 12px; height: 1px;
+      background: #111;
+      position: absolute;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pulse::after {
+      content: "";
+      width: 1px; height: 12px;
+      background: #111;
+      position: absolute;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: rgb(255 255 255 / .35);
+      animation: stl-pulse 2.2s ease-out infinite;
+      z-index: -1;
+    }
+    @keyframes stl-pulse {
+      0%   { transform: scale(.6); opacity: .9; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot:hover .veloute-stl__pulse,
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot.is-open .veloute-stl__pulse {
+      transform: scale(1.08);
+      background: #111;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot:hover .veloute-stl__pulse::before,
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot:hover .veloute-stl__pulse::after,
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot.is-open .veloute-stl__pulse::before,
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot.is-open .veloute-stl__pulse::after {
+      background: #fff;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot.is-open .veloute-stl__pulse::after {
+      transform: rotate(90deg);
+    }
+
+    #shopify-section-{{ section.id }} .veloute-stl__popover {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      width: 240px;
+      background: #fff;
+      color: #111;
+      padding: 12px;
+      box-shadow: 0 18px 50px rgb(0 0 0 / .2);
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+      text-align: left;
+      z-index: 3;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot.is-open .veloute-stl__popover {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pop-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+      background: #efece6;
+      margin-bottom: 10px;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pop-title {
+      display: block;
+      font-size: .9rem;
+      line-height: 1.3;
+      margin: 0 0 4px;
+      color: #111;
+      text-decoration: none;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pop-price {
+      font-size: .82rem;
+      opacity: .7;
+      display: block;
+      margin-bottom: 8px;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pop-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 38px;
+      padding: 8px 14px;
+      background: #111;
+      color: #fff;
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color .25s ease;
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__pop-cta:hover { background: #333; }
+
+    /* near-right hotspots flip popover to the left so it stays in view */
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot[data-edge="right"] .veloute-stl__popover {
+      left: auto;
+      right: 0;
+      transform: translateX(0) translateY(6px);
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot[data-edge="right"].is-open .veloute-stl__popover {
+      transform: translateX(0) translateY(0);
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot[data-edge="left"] .veloute-stl__popover {
+      left: 0;
+      right: auto;
+      transform: translateX(0) translateY(6px);
+    }
+    #shopify-section-{{ section.id }} .veloute-stl__hotspot[data-edge="left"].is-open .veloute-stl__popover {
+      transform: translateX(0) translateY(0);
+    }
+
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .veloute-stl__stage {
+        aspect-ratio: {{ section.settings.image_ratio_mobile }};
+      }
+      #shopify-section-{{ section.id }} .veloute-stl__popover {
+        width: 200px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #shopify-section-{{ section.id }} .veloute-stl__hotspot::before { animation: none; }
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+
+  <div class="veloute-stl__container">
+    <header class="veloute-stl__head" data-reveal>
+      {% if section.settings.eyebrow != blank %}
+        <p class="veloute-stl__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="veloute-stl__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="veloute-stl__text">{{ section.settings.text }}</p>
+      {% endif %}
+    </header>
+
+    <div class="veloute-stl__stage" data-reveal>
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1800 | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 750px) 90vw, 100vw',
+            widths: '600,900,1200,1500,1800',
+            alt: section.settings.heading | default: 'Shop the look' }}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag }}
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% liquid
+          assign product = all_products[block.settings.product]
+          assign x = block.settings.x | default: 50
+          assign y = block.settings.y | default: 50
+          assign edge = 'center'
+          if x >= 70
+            assign edge = 'right'
+          elsif x <= 30
+            assign edge = 'left'
+          endif
+          assign p_title = block.settings.title_override
+          if p_title == blank and product != blank
+            assign p_title = product.title
+          endif
+          assign p_url = block.settings.link_override
+          if p_url == blank and product != blank
+            assign p_url = product.url
+          endif
+          assign p_img = block.settings.image_override
+          if p_img == blank and product != blank
+            assign p_img = product.featured_image
+          endif
+        %}
+        <button
+          type="button"
+          class="veloute-stl__hotspot"
+          data-stl-hotspot
+          data-edge="{{ edge }}"
+          style="left: {{ x }}%; top: {{ y }}%;"
+          aria-label="{{ p_title | default: 'Produkt ansehen' | escape }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="veloute-stl__pulse" aria-hidden="true"></span>
+          <div class="veloute-stl__popover" role="dialog">
+            {% if p_img != blank %}
+              {% if p_img.src %}
+                {{ p_img | image_url: width: 320 | image_tag: loading: 'lazy', class: 'veloute-stl__pop-img', alt: p_title }}
+              {% else %}
+                <img class="veloute-stl__pop-img" src="{{ p_img | image_url: width: 320 }}" alt="{{ p_title | escape }}" loading="lazy">
+              {% endif %}
+            {% else %}
+              <div class="veloute-stl__pop-img" aria-hidden="true"></div>
+            {% endif %}
+            <a href="{{ p_url | default: '#' }}" class="veloute-stl__pop-title">{{ p_title | default: 'Produkt' }}</a>
+            {% if product != blank %}
+              <span class="veloute-stl__pop-price">{{ product.price | money }}</span>
+            {% elsif block.settings.price_override != blank %}
+              <span class="veloute-stl__pop-price">{{ block.settings.price_override }}</span>
+            {% endif %}
+            <a href="{{ p_url | default: '#' }}" class="veloute-stl__pop-cta">{{ block.settings.cta_label | default: 'Ansehen' }}</a>
+          </div>
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-veloute-stl]').forEach(function (root) {
+    if (root.dataset.stlBound === '1') return;
+    root.dataset.stlBound = '1';
+    var hotspots = root.querySelectorAll('[data-stl-hotspot]');
+    function closeAll(except) {
+      hotspots.forEach(function (h) { if (h !== except) h.classList.remove('is-open'); });
+    }
+    hotspots.forEach(function (h) {
+      h.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasOpen = h.classList.contains('is-open');
+        closeAll(h);
+        h.classList.toggle('is-open', !wasOpen);
+      });
+    });
+    document.addEventListener('click', function () { closeAll(null); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll(null);
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Veloute Shop the Look",
+  "tag": "section",
+  "class": "section-veloute-stl",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop the Look" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Tippe auf die Details." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Ein Look, mehrere Lieblingsstücke. Wähle ein Detail im Bild – und sieh dir das Produkt direkt an." },
+    { "type": "image_picker", "id": "image", "label": "Hauptbild" },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Bildverhältnis Desktop",
+      "options": [
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "3 / 2", "label": "3:2" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "1 / 1", "label": "1:1" }
+      ],
+      "default": "3 / 2"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "Bildverhältnis Mobil",
+      "options": [
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "3 / 4", "label": "3:4" }
+      ],
+      "default": "4 / 5"
+    },
+    { "type": "range", "id": "padding_top", "label": "Abstand oben", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Abstand unten", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Produkt" },
+        { "type": "range", "id": "x", "label": "Position X (%)", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "range", "id": "y", "label": "Position Y (%)", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "header", "content": "Überschreibungen (optional)" },
+        { "type": "text", "id": "title_override", "label": "Titel überschreiben" },
+        { "type": "text", "id": "price_override", "label": "Preis überschreiben" },
+        { "type": "image_picker", "id": "image_override", "label": "Bild überschreiben" },
+        { "type": "url", "id": "link_override", "label": "Link überschreiben" },
+        { "type": "text", "id": "cta_label", "label": "CTA-Label", "default": "Ansehen" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Veloute Shop the Look",
+      "blocks": [
+        { "type": "hotspot", "settings": { "x": 32, "y": 38 } },
+        { "type": "hotspot", "settings": { "x": 58, "y": 56 } },
+        { "type": "hotspot", "settings": { "x": 74, "y": 28 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

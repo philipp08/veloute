@@ -1,0 +1,157 @@
+{{ 'veloute-reveal.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'veloute-reveal.js' | asset_url }}" defer></script>
+
+<section
+  class="veloute-press color-{{ section.settings.color_scheme }}"
+  style="--press-pad-top: {{ section.settings.padding_top }}px; --press-pad-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <style>
+    #shopify-section-{{ section.id }} .veloute-press {
+      padding: var(--press-pad-top, 56px) 0 var(--press-pad-bottom, 56px);
+      background: var(--color-background, #faf8f5);
+      color: var(--color-foreground, #1d1d1b);
+      border-block: 1px solid rgb(var(--color-foreground-rgb, 29 29 27) / .08);
+    }
+    #shopify-section-{{ section.id }} .veloute-press__container {
+      width: min(100% - 32px, 1360px);
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(20px, 3vw, 36px);
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    #shopify-section-{{ section.id }} .veloute-press__eyebrow {
+      margin: 0;
+      font-size: .72rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      text-align: center;
+      opacity: .65;
+    }
+    #shopify-section-{{ section.id }} .veloute-press__row {
+      display: grid;
+      grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, minmax(0, 1fr));
+      gap: clamp(20px, 4vw, 56px);
+      align-items: center;
+      justify-items: center;
+    }
+    #shopify-section-{{ section.id }} .veloute-press__item {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      max-width: 180px;
+      min-height: 56px;
+    }
+    #shopify-section-{{ section.id }} .veloute-press__logo,
+    #shopify-section-{{ section.id }} .veloute-press__placeholder {
+      max-width: 100%;
+      max-height: 48px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: .55;
+      transition: filter .35s ease, opacity .35s ease, transform .35s ease;
+    }
+    #shopify-section-{{ section.id }} .veloute-press__item:hover .veloute-press__logo,
+    #shopify-section-{{ section.id }} .veloute-press__item:hover .veloute-press__placeholder,
+    #shopify-section-{{ section.id }} .veloute-press__item:focus-within .veloute-press__logo,
+    #shopify-section-{{ section.id }} .veloute-press__item:focus-within .veloute-press__placeholder {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+    #shopify-section-{{ section.id }} .veloute-press__placeholder {
+      font-family: var(--font-heading--family);
+      font-size: 1.05rem;
+      letter-spacing: .04em;
+      color: var(--color-foreground, #1d1d1b);
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .veloute-press__link {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .veloute-press__row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 20px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #shopify-section-{{ section.id }} .veloute-press__logo,
+      #shopify-section-{{ section.id }} .veloute-press__placeholder {
+        transition: none;
+      }
+    }
+  </style>
+
+  <div class="veloute-press__container">
+    {% if section.settings.eyebrow != blank %}
+      <p class="veloute-press__eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+    <div class="veloute-press__row">
+      {% for block in section.blocks %}
+        <div class="veloute-press__item" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a class="veloute-press__link" href="{{ block.settings.link }}" aria-label="{{ block.settings.name | default: 'Press' | escape }}">
+          {% endif %}
+            {% if block.settings.logo != blank %}
+              {{ block.settings.logo | image_url: width: 360 | image_tag:
+                  loading: 'lazy',
+                  class: 'veloute-press__logo',
+                  alt: block.settings.name | default: 'Press logo' }}
+            {% else %}
+              <span class="veloute-press__placeholder">{{ block.settings.name | default: 'Magazin' }}</span>
+            {% endif %}
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veloute Press Strip",
+  "tag": "section",
+  "class": "section-veloute-press",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Bekannt aus" },
+    { "type": "range", "id": "padding_top", "label": "Abstand oben", "min": 0, "max": 140, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Abstand unten", "min": 0, "max": 140, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        { "type": "text", "id": "name", "label": "Name / Alt", "default": "Magazin" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Veloute Press Strip",
+      "blocks": [
+        { "type": "logo", "settings": { "name": "Vogue" } },
+        { "type": "logo", "settings": { "name": "ELLE" } },
+        { "type": "logo", "settings": { "name": "Harper's Bazaar" } },
+        { "type": "logo", "settings": { "name": "InStyle" } },
+        { "type": "logo", "settings": { "name": "Glamour" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

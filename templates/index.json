@@ -7,6 +7,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/IMG_0915.jpg",
+            "image_position": "right",
             "eyebrow": "Veloute Boutique",
             "heading": "Details, die den Unterschied machen.",
             "text": "Schmuck und Accessoires mit ruhiger Silhouette, klarer Auswahl und hochwertigem Finish.",
@@ -19,6 +20,7 @@
         "slide_2": {
           "type": "slide",
           "settings": {
+            "image_position": "left",
             "eyebrow": "Neu im Shop",
             "heading": "Feine Halsketten. Klare Linien.",
             "text": "Stücke, die nahe am Look bleiben – einzeln getragen oder fein gelayert.",
@@ -31,6 +33,7 @@
         "slide_3": {
           "type": "slide",
           "settings": {
+            "image_position": "right",
             "eyebrow": "Geschenkidee",
             "heading": "Ein Detail. Ein Moment.",
             "text": "Sorgfältig verpackt, schnell versendet – für die Momente, die zählen.",
@@ -44,11 +47,16 @@
       "block_order": ["slide_1", "slide_2", "slide_3"],
       "settings": {
         "color_scheme": "scheme-1",
-        "height_desktop": 100,
-        "height_mobile": 90,
-        "overlay_opacity": 35,
+        "layout_style": "side-by-side",
+        "image_ratio_desktop": "4 / 3",
+        "image_ratio_mobile": "4 / 5",
+        "max_height_desktop": 620,
+        "max_height_mobile": 520,
+        "overlay_opacity": 30,
         "autoplay": true,
         "interval": 6,
+        "padding_top": 32,
+        "padding_bottom": 48,
         "aria_label": "Veloute Highlights"
       }
     },
@@ -264,6 +272,42 @@
         "padding_bottom": 96
       }
     },
+    "shop_the_look": {
+      "type": "veloute-shop-the-look",
+      "blocks": {
+        "hs1": { "type": "hotspot", "settings": { "x": 32, "y": 36, "title_override": "Feine Halskette", "price_override": "ab 89 €", "link_override": "/collections/halsketten", "cta_label": "Ansehen" } },
+        "hs2": { "type": "hotspot", "settings": { "x": 55, "y": 58, "title_override": "Armband Layer", "price_override": "ab 69 €", "link_override": "/collections/armbaender", "cta_label": "Ansehen" } },
+        "hs3": { "type": "hotspot", "settings": { "x": 74, "y": 28, "title_override": "Statement-Detail", "price_override": "ab 119 €", "link_override": "/collections/highlights", "cta_label": "Ansehen" } }
+      },
+      "block_order": ["hs1", "hs2", "hs3"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Shop the Look",
+        "heading": "Tippe auf die Details.",
+        "text": "Ein Look, mehrere Lieblingsstücke. Wähle einen Hotspot im Bild – und sieh dir das passende Stück direkt an.",
+        "image_ratio": "3 / 2",
+        "image_ratio_mobile": "4 / 5",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "press_strip": {
+      "type": "veloute-press-strip",
+      "blocks": {
+        "pr1": { "type": "logo", "settings": { "name": "Vogue" } },
+        "pr2": { "type": "logo", "settings": { "name": "ELLE" } },
+        "pr3": { "type": "logo", "settings": { "name": "Harper's Bazaar" } },
+        "pr4": { "type": "logo", "settings": { "name": "InStyle" } },
+        "pr5": { "type": "logo", "settings": { "name": "Glamour" } }
+      },
+      "block_order": ["pr1", "pr2", "pr3", "pr4", "pr5"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Bekannt aus",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
     "newsletter": {
       "type": "veloute-newsletter",
       "settings": {
@@ -287,10 +331,12 @@
     "marquee",
     "featured_highlights",
     "editorial_split",
+    "shop_the_look",
     "category_tiles",
     "lookbook",
     "testimonials",
     "usp_grid",
+    "press_strip",
     "newsletter"
   ]
 }
